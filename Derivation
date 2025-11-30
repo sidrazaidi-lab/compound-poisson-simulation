@@ -76,5 +76,6 @@ $$Var[S(t)] = E[N(t)] Var[X] + Var[N(t)] (E[X])^2$$
 
 Since $\text{Exp}(\beta)$ has $Var[X] = 1/\beta^2$, and $E[N(t)] = Var[N(t)] = \lambda t$:
 
-$$Var[S(t)] = \frac{\lambda t}{\beta^2} + \frac{\lambda t}{\beta^2} = \frac{2 \lambda t}{\beta^2}$$
+$Var[S(t)] = \frac{\lambda t}{\beta^2} + \frac{\lambda t}{\beta^2} = \frac{2 \lambda t}{\beta^2}$
+
 Var[S(t)] = (\lambda t) \left( \frac{1}{\beta^2} \right) + (\lambda t) \left( \frac{1}{\beta} \right)^2
