@@ -1,0 +1,80 @@
+Derivation of the Distribution of the Compound Poisson Process S(t)
+
+Model Definition
+
+The Compound Poisson Process $S(t)$ is defined as:
+
+$$S(t) = \sum_{i=1}^{N(t)} X_i$$
+
+Where:
+
+The number of events $N(t)$ follows a Poisson distribution with intensity $\lambda t$:
+
+
+$$P(N(t) = n) = e^{-\lambda t} \frac{(\lambda t)^n}{n!}, \quad n = 0, 1, 2, \dots$$
+
+The jump sizes $X_i$ are independent and identically distributed (i.i.d.) Exponential variables with rate $\beta$:
+
+
+$$X_i \sim \text{Exp}(\beta)$$
+
+
+The probability density function (PDF) is $f_X(x) = \beta e^{-\beta x}$ for $x > 0$.
+
+1. Probability Density Function (PDF)
+
+The distribution of $S(t)$ is found by conditioning on the number of jumps $N(t)$:
+
+$$f_{S(t)}(s) = \sum_{n=0}^{\infty} f_{S(t) \mid N(t)=n}(s) P(N(t)=n)$$
+
+Case 1: No Jumps ($n=0$)
+
+If $N(t) = 0$, then $S(t) = 0$. This gives a probability mass at $s=0$.
+
+$$P(S(t) = 0) = P(N(t) = 0) = e^{-\lambda t}$$
+
+This is represented by the Dirac delta function $\delta(s)$ in the PDF: $e^{-\lambda t} \delta(s)$.
+
+Case 2: $n$ Jumps ($n \ge 1$)
+
+If $N(t) = n$, $S(t)$ is the sum of $n$ i.i.d. $\text{Exp}(\beta)$ variables. The sum of $n$ i.i.d. Exponential random variables follows a Gamma distribution:
+
+$$S(t) \mid N(t)=n \sim \text{Gamma}(n, \beta)$$
+
+The PDF of the $\text{Gamma}(n, \beta)$ distribution is:
+
+
+$$f_{S(t)|N(t)=n}(s) = \frac{\beta^n}{\Gamma(n)} s^{n-1} e^{-\beta s}, \quad s > 0$$
+
+Final Unconditional PDF
+
+Combining the two cases:
+
+$$f_{S(t)}(s) = e^{-\lambda t} \delta(s) + \sum_{n=1}^{\infty} \left[ \frac{\beta^n}{(n-1)!} s^{n-1} e^{-\beta s} \right] \left[ e^{-\lambda t} \frac{(\lambda t)^n}{n!} \right]$$
+
+This shows that the distribution of $S(t)$ is a mixture of a probability mass at zero and a continuous part for $s > 0$.
+
+2. Mean and Variance
+
+Mean $E[S(t)]$
+
+Using Wald's identity (or the law of total expectation):
+
+
+$$E[S(t)] = E[N(t)] E[X]$$
+
+Since $E[N(t)] = \lambda t$ and $E[X] = 1/\beta$:
+
+$$E[S(t)] = (\lambda t) \left( \frac{1}{\beta} \right) = \frac{\lambda t}{\beta}$$
+
+Variance $Var[S(t)]$
+
+Using the law of total variance:
+
+
+$$Var[S(t)] = E[N(t)] Var[X] + Var[N(t)] (E[X])^2$$
+
+Since $\text{Exp}(\beta)$ has $Var[X] = 1/\beta^2$, and $E[N(t)] = Var[N(t)] = \lambda t$:
+
+$$Var[S(t)] = \frac{\lambda t}{\beta^2} + \frac{\lambda t}{\beta^2} = \frac{2 \lambda t}{\beta^2}$$
+Var[S(t)] = (\lambda t) \left( \frac{1}{\beta^2} \right) + (\lambda t) \left( \frac{1}{\beta} \right)^2
